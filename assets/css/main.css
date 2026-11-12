@@ -2840,7 +2840,7 @@ input, select, textarea {
 
 		}
 
-		@media screen and (max-width: 736px) {
+		@media screen and (max-width: 800px) {
 
 			.features {
 				width: 100%;
@@ -3783,21 +3783,23 @@ input, select, textarea {
 			}
 
 		}
-/* Feature image */
+	.feature-visual {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		border: 1px solid #dddddd;
+		border-radius: 50%;
+		padding: 0.65em;
+		margin: 0 0 2em 0;
+	}
 
 	.feature-image {
-		position: absolute;
-		top: 0.65em;
-		left: 0.65em;
+		display: block;
 		width: 14.0625rem;
 		height: 14.0625rem;
 		object-fit: contain;
 		border: 1px solid #dddddd;
-		border-radius: 100%;
-	}
-
-	.icon.image-only:before {
-		color: transparent;
+		border-radius: 50%;
 	}
 
 	.image-tile {
