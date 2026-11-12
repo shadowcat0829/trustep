@@ -1,16 +1,79 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="85px" height="85px" viewBox="0 0 80 80" enable-background="new 0 0 80 80" xml:space="preserve">
-	<g>
-		<path fill="#FFFFFF" d="M40,0c22.091,0,40,17.909,40,40S62.091,80,40,80S0,62.091,0,40S17.909,0,40,0z"/>
-	</g>
-	<g>
-		<path fill="#8cc9f0" d="M50.378,32.576c0,1.005-0.815,1.821-1.821,1.821c-1.005,0-1.82-0.816-1.82-1.821
-			c0-1.005,0.815-1.821,1.82-1.821C49.563,30.755,50.378,31.571,50.378,32.576z M54.627,27.113c0-0.341-0.304-0.607-0.646-0.607
-			c-6.601,0-10.223,1.518-14.964,6.241c-1.081,1.1-2.2,2.352-3.338,3.699l-7.188,0.379c-0.19,0.019-0.379,0.133-0.493,0.304
-			l-4.249,7.284c-0.133,0.228-0.095,0.53,0.095,0.739l1.214,1.215c0.114,0.113,0.285,0.17,0.437,0.17c0.057,0,0.114,0,0.17-0.02
-			l5.235-1.611l5.33,5.33l-1.612,5.236c-0.057,0.209,0,0.437,0.152,0.606l1.214,1.214c0.133,0.114,0.284,0.171,0.436,0.171
-			c0.114,0,0.208-0.021,0.304-0.075l7.283-4.25c0.171-0.113,0.284-0.304,0.305-0.492l0.379-7.19c1.347-1.138,2.599-2.257,3.699-3.339
-			C52.882,37.603,54.627,33.411,54.627,27.113z"/>
-	</g>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" width="85" height="85">
+  <defs>
+    <!-- 原始脚印轮廓定义，供基础层与高光层复用 -->
+    <g id="foot-shape">
+      <!-- 小脚趾 (第5趾) -->
+      <ellipse cx="83.5" cy="127" rx="6.5" ry="9.5" transform="rotate(-18 83.5 127)" />
+      <!-- 第4趾 -->
+      <ellipse cx="96" cy="110.5" rx="8.5" ry="12" transform="rotate(-14 96 110.5)" />
+      <!-- 第3趾 -->
+      <ellipse cx="116.5" cy="96.5" rx="10" ry="14" transform="rotate(-10 116.5 96.5)" />
+      <!-- 第2趾 -->
+      <ellipse cx="144" cy="87.5" rx="11.5" ry="16" transform="rotate(-5 144 87.5)" />
+      <!-- 大脚趾 (拇趾) -->
+      <ellipse cx="183" cy="84.5" rx="15.5" ry="21.5" transform="rotate(2 183 84.5)" />
+      <!-- 脚掌与足弓曲线 -->
+      <path d="M 101 168 
+               C 88 153, 93 128, 118 117 
+               C 145 105, 181 112, 191 129 
+               C 200 145, 185 168, 166 193 
+               C 147 218, 134 244, 146 259 
+               C 156 271, 174 268, 187 251 
+               C 182 271, 163 280, 146 273 
+               C 127 265, 123 238, 137 211 
+               C 151 183, 176 157, 175 139 
+               C 174 123, 147 118, 123 127 
+               C 101 135, 93 153, 101 168 Z" />
+    </g>
+
+    <!-- 1. 脚印内部高光裁剪路径 -->
+    <clipPath id="foot-clip">
+      <use href="#foot-shape" />
+    </clipPath>
+
+    <!-- 2. 扫描线上下拖尾光晕渐变 -->
+    <linearGradient id="scan-trail" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#00E5FF" stop-opacity="0" />
+      <stop offset="45%" stop-color="#00E5FF" stop-opacity="0.35" />
+      <stop offset="50%" stop-color="#FFFFFF" stop-opacity="0.95" />
+      <stop offset="55%" stop-color="#00E5FF" stop-opacity="0.35" />
+      <stop offset="100%" stop-color="#00E5FF" stop-opacity="0" />
+    </linearGradient>
+
+    <!-- 3. 脚印内部扫过时的亮紫/品红能量带渐变 -->
+    <linearGradient id="foot-highlight" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#D500F9" stop-opacity="0" />
+      <stop offset="50%" stop-color="#EA80FC" stop-opacity="0.9" />
+      <stop offset="100%" stop-color="#D500F9" stop-opacity="0" />
+    </linearGradient>
+
+    <!-- 4. 扫描激光线外发光滤镜 -->
+    <filter id="laser-glow" x="-20%" y="-50%" width="140%" height="200%">
+      <feGaussianBlur stdDeviation="2.5" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- 第1层：原始品牌色脚印底层 -->
+  <use href="#foot-shape" fill="#692373" />
+
+  <!-- 第2层：扫描经过脚印本体时触发的内部高光反应 -->
+  <g clip-path="url(#foot-clip)">
+    <rect x="60" y="-20" width="160" height="40" fill="url(#foot-highlight)">
+      <animateTransform attributeName="transform" type="translate" values="0 75; 0 295; 0 75" keyTimes="0; 0.5; 1" dur="3s" repeatCount="indefinite" calcMode="spline" keySplines="0.42 0 0.58 1; 0.42 0 0.58 1" />
+    </rect>
+  </g>
+
+  <!-- 第3层：外部激光扫描线与渐变光晕 -->
+  <g>
+    <rect x="65" y="-18" width="150" height="36" fill="url(#scan-trail)" />
+    <line x1="65" y1="0" x2="215" y2="0" stroke="#00E5FF" stroke-width="2" stroke-linecap="round" filter="url(#laser-glow)" />
+    <circle cx="65" cy="0" r="2.2" fill="#00E5FF" filter="url(#laser-glow)" />
+    <circle cx="215" cy="0" r="2.2" fill="#00E5FF" filter="url(#laser-glow)" />
+
+    <animateTransform attributeName="transform" type="translate" values="0 55; 0 285; 0 55" keyTimes="0; 0.5; 1" dur="3s" repeatCount="indefinite" calcMode="spline" keySplines="0.42 0 0.58 1; 0.42 0 0.58 1" />
+  </g>
 </svg>
