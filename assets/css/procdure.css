@@ -1,0 +1,40 @@
+/* Page additions to the shared Stellar styles used by elements.html. */
+html { scroll-behavior: smooth; }
+.brand { display: inline-block; margin-bottom: 2.2em; border: 0; font-size: 1.2em; letter-spacing: .08em; }
+.brand span { display: block; font-size: .6em; letter-spacing: .14em; opacity: .75; }
+#header h1 { font-size: 2.7em; }
+.eyebrow { display: block; color: #9b83b8; letter-spacing: .16em; font-size: .75em; margin-bottom: 1em; font-weight: 400; }
+#overview .major p { max-width: 48em; margin-left: auto; margin-right: auto; }
+.process-figure { margin: 2em 0; scroll-margin-top: 6em; }
+.diagram-link { display: block; border: 1px solid #eee9f2; border-radius: 10px; overflow: hidden; background: #fff; }
+.process-illustration { display: block; width: 100%; height: auto; }
+.process-figure figcaption { text-align: center; margin-top: 1.3em; font-size: .9em; line-height: 1.9; }
+.process-figure figcaption a { font-size: .85em; color: #89779d; }
+.diagram-link:focus-visible { outline: 3px solid #8cc9f0; outline-offset: 4px; }
+.feedback-loop { border: 1px dashed #c4b4d6; border-radius: 8px; padding: 1em; text-align: center; font-size: .9em; color: #89779d; background: #faf7fc; }
+.feedback-loop > span { font-size: 1.5em; vertical-align: middle; margin-right: .5em; }
+.feedback-loop strong { display: inline-block; margin-left: 1em; }
+.detail-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5em 3em; }
+.detail-grid article { position: relative; padding-left: 3.3em; scroll-margin-top: 7em; }
+.step-number { position: absolute; left: 0; top: 0; font-size: 1.7em; color: #c5b3d7; }
+.detail-grid h3 { font-size: 1.15em; }
+.detail-grid p { margin-bottom: 1em; }
+.deliverable { border-top: 1px solid #eee; padding-top: 1em; font-size: .8em; color: #999; }
+.deliverable strong { display: block; color: #89779d; margin-top: .3em; }
+.followup-layout { display: grid; grid-template-columns: .85fr 1.15fr; align-items: center; gap: 3em; }
+.insole-visual { text-align: center; }
+.insole-visual img { width: 100%; max-height: 330px; object-fit: contain; }
+.insole-visual > span { display: block; margin-top: 2em; color: #a99ab8; letter-spacing: .1em; font-size: .65em; }
+#overview, #details, #followup { scroll-margin-top: 5em; }
+@media screen and (max-width: 980px) {
+    .followup-layout { gap: 2em; }
+}
+@media screen and (max-width: 736px) {
+    #header h1 { font-size: 1.9em; }
+    .followup-layout, .detail-grid { grid-template-columns: 1fr; }
+    .feedback-loop strong { display: block; margin: .5em 0 0; }
+    .insole-visual img { max-height: 220px; }
+}
+@media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+}
