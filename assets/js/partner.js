@@ -5,6 +5,7 @@
     const track = row.parentElement;
     const preview = document.querySelector('.partner-photo-preview');
     const photo = preview.querySelector('img');
+    const pixelsPerSecond = 32;
 
     const copy = row.cloneNode(true);
     copy.setAttribute('aria-hidden', 'true');
@@ -18,6 +19,7 @@
         while (track.children.length < rowCount) track.append(copy.cloneNode(true));
         while (track.children.length > rowCount) track.lastElementChild.remove();
         track.style.setProperty('--partner-scroll-distance', `${-rowWidth}px`);
+        track.style.setProperty('--partner-scroll-duration', `${rowWidth / pixelsPerSecond}s`);
         viewport.classList.add('is-playing');
     });
     resize.observe(row);

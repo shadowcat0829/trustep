@@ -1,3 +1,28 @@
+.partner-main {
+    display: flow-root;
+}
+
+.partner-gallery {
+    margin: 0.5rem 0.5rem 0;
+}
+
+#main.partner-main > .main {
+    border-top: 0;
+}
+
+/* Match the generic page's lead-image spacing on smaller screens. */
+@media screen and (max-width: 736px) {
+    #main.partner-main > .main {
+        padding-top: 2em;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    #main.partner-main > .main {
+        padding-top: 1.5em;
+    }
+}
+
 .partner-gallery-window {
     overflow-x: auto;
     background: #f4f4f4;
@@ -22,8 +47,9 @@
 }
 
 #main .partner-gallery img {
+    display: block;
     width: auto;
-    height: clamp(88px, 12vw, 132px);
+    height: clamp(110px, 15vw, 165px);
     border-radius: 0;
 }
 
@@ -32,7 +58,7 @@
 }
 
 .is-playing .partner-gallery-track {
-    animation: partner-gallery-scroll 32s linear infinite;
+    animation: partner-gallery-scroll var(--partner-scroll-duration) linear infinite;
 }
 
 .partner-gallery.is-previewing .partner-gallery-track {
